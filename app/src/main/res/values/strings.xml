@@ -4,8 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="sample_result">Here is the result</string>
-
     <string name="result">=</string>
     <string name="add">+</string>
     <string name="substract">-</string>
