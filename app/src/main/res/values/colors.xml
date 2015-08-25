@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="number_button">#434343</color>
+    <color name="command_button">#1de9b6</color>
+    <color name="command_button_pressed">#19c69b</color>
+    <color name="number_button_pressed">#666666</color>
+
+</resources>

@@ -7,9 +7,12 @@
 
     <TextView
         android:id="@+id/resultTextView"
-        android:text=""
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="32sp"
+        android:layout_alignParentEnd="true"
+        android:gravity="top"/>
 
         <TableLayout
             android:id="@+id/commands"
@@ -52,7 +55,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/add"
-                    android:onClick="appendOperator"/>
+                    android:onClick="appendOperator"
+                    style="@style/command_button"/>
 
             </TableRow>
 
@@ -88,7 +92,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/substract"
-                    android:onClick="appendOperator"/>
+                    android:onClick="appendOperator"
+                    style="@style/command_button"/>
 
 
             </TableRow>
@@ -125,7 +130,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/backspace"
-                    android:onClick="backspace"/>
+                    android:onClick="backspace"
+                    style="@style/command_button"/>
 
             </TableRow>
 
@@ -147,14 +153,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="@string/result"
-                    android:onClick="result"/>
+                    android:onClick="result"
+                    style="@style/command_button"/>
                 <Button
                     android:id="@+id/clearButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/clear"
-                    android:onClick="clear"/>
+                    android:onClick="clear"
+                    style="@style/command_button"/>
 
             </TableRow>
 
