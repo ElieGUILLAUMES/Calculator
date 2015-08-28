@@ -1,8 +1,8 @@
 package com.icelandic_courses.elie.calculator;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
@@ -12,7 +12,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView myTextView=(TextView)findViewById(R.id.resultTextView);
+        Typeface typeFace=Typeface.createFromAsset(getAssets(), "fonts/digital-7.ttf");
+        myTextView.setTypeface(typeFace);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
