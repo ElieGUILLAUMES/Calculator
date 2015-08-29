@@ -1,6 +1,7 @@
 package com.icelandic_courses.elie.calculator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -9,7 +10,8 @@ import android.widget.*;
 
 public class MainActivity extends Activity {
 
-    private boolean allowToVibrate;
+    private static boolean allowToVibrate;
+    public final static String EXTRA_VIBRATION = "vibration";
     private Vibrator vibe;
 
     @Override
@@ -21,7 +23,6 @@ public class MainActivity extends Activity {
         Typeface typeFace=Typeface.createFromAsset(getAssets(), "fonts/digital-7.ttf");
         myTextView.setTypeface(typeFace);
 
-        allowToVibrate = true;
         vibe = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
     }
 
@@ -43,7 +44,10 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            //return true;
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra(EXTRA_VIBRATION, allowToVibrate);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -152,8 +156,22 @@ public class MainActivity extends Activity {
     }
 
     private void vibrate(){
-        if(allowToVibrate){
+        if(isAllowToVibrate()){
             vibe.vibrate(100);
         }
     }
+
+    public static void allowVibration(){
+        allowToVibrate = true;
+    }
+
+    public static void disableVibration(){
+        allowToVibrate = false;
+    }
+
+    public static boolean isAllowToVibrate(){
+        return allowToVibrate;
+    }
+
+
 }

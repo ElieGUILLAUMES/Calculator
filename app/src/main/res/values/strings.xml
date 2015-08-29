@@ -12,5 +12,8 @@
 
     <string name="clear">C</string>
     <string name="backspace">B</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="settings_vibration">Vibration</string>
 
 </resources>
