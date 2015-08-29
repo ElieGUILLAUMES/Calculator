@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="YourApplicationTheme" parent="android:Theme.Holo.Light.NoActionBar">
+    <style name="YourApplicationTheme" parent="android:Theme.Holo.Light">
         <item name="android:buttonStyle">@style/number_button</item>
     </style>
 

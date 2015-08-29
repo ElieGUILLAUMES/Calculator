@@ -3,10 +3,14 @@ package com.icelandic_courses.elie.calculator;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.*;
 import android.widget.*;
 
 public class MainActivity extends Activity {
+
+    private boolean allowToVibrate;
+    private Vibrator vibe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +20,9 @@ public class MainActivity extends Activity {
         TextView myTextView=(TextView)findViewById(R.id.resultTextView);
         Typeface typeFace=Typeface.createFromAsset(getAssets(), "fonts/digital-7.ttf");
         myTextView.setTypeface(typeFace);
+
+        allowToVibrate = true;
+        vibe = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
     }
 
 
@@ -47,6 +54,7 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void appendNumber(View view) {
+        vibrate();
         Button b = (Button) view;
         TextView tv = (TextView) findViewById(R.id.resultTextView);
         tv.append(b.getText());
@@ -57,6 +65,7 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void appendOperator(View view) {
+        vibrate();
         Button b = (Button) view;
         TextView tv = (TextView) findViewById(R.id.resultTextView);
 
@@ -83,6 +92,7 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void backspace(View view) {
+        vibrate();
         TextView tv = (TextView) findViewById(R.id.resultTextView);
         CharSequence text = tv.getText();
         text = text.subSequence(0, Math.max(text.length()-1, 0));
@@ -94,6 +104,7 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void clear(View view) {
+        vibrate();
         TextView tv = (TextView) findViewById(R.id.resultTextView);
         tv.setText("");
     }
@@ -103,6 +114,7 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void result(View view) {
+        vibrate();
         TextView tv = (TextView) findViewById(R.id.resultTextView);
 
         // add 0 to be able to calculate "-300+100" as "0-300+100"
@@ -137,5 +149,11 @@ public class MainActivity extends Activity {
 
         //apply result value
         tv.setText(String.valueOf(result));
+    }
+
+    private void vibrate(){
+        if(allowToVibrate){
+            vibe.vibrate(100);
+        }
     }
 }
