@@ -11,9 +11,7 @@ import android.widget.*;
 
 public class MainActivity extends Activity {
 
-    private static boolean allowToVibrate;
     private SharedPreferences prefs;
-    public final static String EXTRA_VIBRATION = "vibration";
     private Vibrator vibe;
 
     @Override
@@ -47,6 +45,8 @@ public class MainActivity extends Activity {
         backspaceButton.setBackgroundResource(buttonRes);
         clearButton.setBackgroundResource(buttonRes);
         resultButton.setBackgroundResource(buttonRes);
+
+
     }
 
     @Override
@@ -65,9 +65,7 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            //return true;
             Intent intent = new Intent(this, SettingsActivity.class);
-            intent.putExtra(EXTRA_VIBRATION, allowToVibrate);
             startActivity(intent);
         }
 
@@ -177,22 +175,9 @@ public class MainActivity extends Activity {
     }
 
     private void vibrate(){
-        if(isAllowToVibrate()){
+        if(prefs.getBoolean("vibration", false)){
             vibe.vibrate(100);
         }
     }
-
-    public static void allowVibration(){
-        allowToVibrate = true;
-    }
-
-    public static void disableVibration(){
-        allowToVibrate = false;
-    }
-
-    public static boolean isAllowToVibrate(){
-        return allowToVibrate;
-    }
-
 
 }

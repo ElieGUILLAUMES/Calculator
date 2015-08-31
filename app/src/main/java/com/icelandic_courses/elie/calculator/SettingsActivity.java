@@ -1,6 +1,7 @@
 package com.icelandic_courses.elie.calculator;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,18 +24,9 @@ public class SettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        checkBoxVibration = (CheckBox) findViewById(R.id.vibrateCheckBox);
-
-        // Get the message from the intent
-        Intent intent = getIntent();
-        boolean allowToVibrate = intent.getBooleanExtra(MainActivity.EXTRA_VIBRATION, false);
-
-        if(allowToVibrate){
-            checkBoxVibration.setChecked(allowToVibrate);
-        }
-
         //getSharedPrefs
         prefs = getSharedPreferences("Calculator", 0);
+
         final Spinner spinnerTheme = (Spinner) findViewById(R.id.theme);
         spinnerTheme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -54,6 +46,18 @@ public class SettingsActivity extends Activity {
         //set theme
         int theme = prefs.getInt("theme", 0);
         spinnerTheme.setSelection(theme);
+
+        checkBoxVibration = (CheckBox) findViewById(R.id.vibrateCheckBox);
+        checkBoxVibration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean checked = checkBoxVibration.isChecked();
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("vibration", checked);
+                editor.commit();
+            }
+        });
+        checkBoxVibration.setChecked(prefs.getBoolean("vibration", false));
     }
 
     @Override
@@ -76,19 +80,6 @@ public class SettingsActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * @param view
-     */
-    public void setAllowToVibrate(View view){
-        CheckBox checkbox = (CheckBox) findViewById(R.id.vibrateCheckBox);
-        if(checkbox.isChecked()){
-            MainActivity.allowVibration();
-        } else {
-            MainActivity.disableVibration();
-        }
-
     }
 
 }
