@@ -15,5 +15,11 @@
     <string name="title_activity_settings">SettingsActivity</string>
 
     <string name="settings_vibration">Vibration</string>
+    <string name="settings_theme">Theme</string>
+
+    <string-array name="settings_themes">
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
 
 </resources>

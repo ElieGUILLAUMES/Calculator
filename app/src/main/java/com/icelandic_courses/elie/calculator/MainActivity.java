@@ -2,6 +2,7 @@ package com.icelandic_courses.elie.calculator;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -11,6 +12,7 @@ import android.widget.*;
 public class MainActivity extends Activity {
 
     private static boolean allowToVibrate;
+    private SharedPreferences prefs;
     public final static String EXTRA_VIBRATION = "vibration";
     private Vibrator vibe;
 
@@ -19,6 +21,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        prefs = getSharedPreferences("Calculator", 0);
+
         TextView myTextView=(TextView)findViewById(R.id.resultTextView);
         Typeface typeFace=Typeface.createFromAsset(getAssets(), "fonts/digital-7.ttf");
         myTextView.setTypeface(typeFace);
@@ -26,7 +30,24 @@ public class MainActivity extends Activity {
         vibe = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        Button addButton = (Button)findViewById(R.id.addButton);
+        Button substractButton = (Button)findViewById(R.id.substractButton);
+        Button backspaceButton = (Button)findViewById(R.id.backspaceButton);
+        Button clearButton = (Button)findViewById(R.id.clearButton);
+        Button resultButton = (Button)findViewById(R.id.resultButton);
+
+        int buttonRes = (prefs.getInt("theme", 0) == 0) ? R.drawable.button_green : R.drawable.button_blue;
+
+        addButton.setBackgroundResource(buttonRes);
+        substractButton.setBackgroundResource(buttonRes);
+        backspaceButton.setBackgroundResource(buttonRes);
+        clearButton.setBackgroundResource(buttonRes);
+        resultButton.setBackgroundResource(buttonRes);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

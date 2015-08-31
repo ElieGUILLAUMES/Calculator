@@ -5,5 +5,5 @@
         android:top="8dp"
         android:right="8dp"
         android:bottom="8dp" />
-    <solid android:color="@color/number_button" />
+    <solid android:color="@color/black_light" />
 </shape>

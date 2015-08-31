@@ -56,7 +56,7 @@
                     android:layout_weight="1"
                     android:text="@string/add"
                     android:onClick="appendOperator"
-                    style="@style/command_button"/>
+                    style="@style/green_button"/>
 
             </TableRow>
 
@@ -93,7 +93,7 @@
                     android:layout_weight="1"
                     android:text="@string/substract"
                     android:onClick="appendOperator"
-                    style="@style/command_button"/>
+                    style="@style/green_button"/>
 
 
             </TableRow>
@@ -131,7 +131,7 @@
                     android:layout_weight="1"
                     android:text="@string/backspace"
                     android:onClick="backspace"
-                    style="@style/command_button"/>
+                    style="@style/green_button"/>
 
             </TableRow>
 
@@ -154,7 +154,7 @@
                     android:layout_weight="2"
                     android:text="@string/result"
                     android:onClick="result"
-                    style="@style/command_button"/>
+                    style="@style/green_button"/>
                 <Button
                     android:id="@+id/clearButton"
                     android:layout_width="0dp"
@@ -162,7 +162,7 @@
                     android:layout_weight="1"
                     android:text="@string/clear"
                     android:onClick="clear"
-                    style="@style/command_button"/>
+                    style="@style/green_button"/>
 
             </TableRow>
 
